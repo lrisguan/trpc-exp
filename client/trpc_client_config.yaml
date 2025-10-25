@@ -1,0 +1,33 @@
+# 客户端配置
+global:
+  threadmodel:
+    fiber:                            # Use Fiber(m:n coroutine) threadmodel
+      - instance_name: fiber_instance # Need to be unique if you config mutiple fiber threadmodel instances
+        # Fiber worker thread num
+        # If not specified, will use number of cores on the machine.
+        # In a Numa architecture, the workers will be automatically grouped (8-15 cores per group),
+        # while in Uma architecture, they will not be grouped.
+        concurrency_hint: 8
+
+client:
+  # 定义要连接的目标服务
+  service:
+    - name: trpc.exp.File.FileTransfer
+      #impl: FileTransferServiceImpl
+      target: 127.0.0.1:20000
+      protocol: trpc
+      network: tcp
+      timeout: 1000
+      selector_name: direct
+
+plugins:
+  log:
+    default:
+      - name: default
+        min_level: 0 # 0-trace, 1-debug, 2-info, 3-warn, 4-error, 5-critical
+        sinks:
+          local_file:
+            filename: FileTransfer.log
+          stdout:
+            colored: true
+            format: "%Y-%m-%d %H:%M:%S.%e %L %t %N:%v"

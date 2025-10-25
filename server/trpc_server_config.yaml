@@ -1,0 +1,38 @@
+# server/trpc_server_config.yaml
+
+# 全局配置
+global:
+  # 全局线程模型，必须存在，避免框架在运行时内部分配不完全导致断言
+  threadmodel:
+    fiber:
+      - instance_name: fiber_instance      # 与 runtime 注册的实例名一致（日志中看到 fiber_instance）
+        io_handle_type: separate           # io/handle 分离，按需改为 direct
+        io_thread_num: 2                   # IO 线程数（根据机器核数调整）
+        handle_thread_num: 8               # 业务处理线程数（至少 >0）
+
+# 服务端配置
+server:
+  app: exp              # 应用名
+  server: File  # 服务名
+  # 定义服务监听的地址和端口
+  admin_port: 9688                     # Start server with admin service which can manage service
+  admin_ip: 0.0.0.0
+  service:                  # 注意这里必须是 services（复数）
+    - name: trpc.exp.File.FileTransfer  # 服务的全名，必须与 proto 文件中的 service 定义一致
+      #impl: FileTransferServiceImpl # 指定服务实现类
+      ip: 127.0.0.1                # 监听本地回环地址
+      port: 20000                   # 监听端口
+      protocol: trpc                # 使用 tRPC 协议
+      network: tcp                  # 使用 TCP 网络
+      max_concurrency: 8            # 最大并发线程数（可选）
+      thread_model:
+        instance_name: fiber_instance
+log:
+  - name: default
+    filename: console
+    level: 2
+    max_file_size: 100
+    max_files: 10
+    backup_before_compress: false
+    compress_after_rotation: false
+    format: "%Y-%m-%d %H:%M:%S.%e %L %t %N:%v"

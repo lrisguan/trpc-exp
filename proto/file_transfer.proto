@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+// 定义包名，避免命名冲突
+package trpc.exp.File;
+
+// 定义文件传输服务
+service FileTransfer {
+    // 定义一个客户端流RPC方法 UploadFile
+    // 客户端可以像流一样持续发送 FileChunk 消息
+    // 当客户端发送完毕后，服务端返回一个 UploadResponse 消息
+    rpc UploadFile(stream FileChunk) returns (UploadResponse) {}
+}
+
+// 定义文件块消息
+message FileChunk {
+    // 文件块的具体内容。使用 bytes 类型是因为它可以表示任意的二进制数据。
+    // 1 是字段编号，在消息中必须是唯一的。
+    bytes data = 1;
+}
+
+// 定义上传操作的响应消息
+message UploadResponse {
+    // 表示操作是否成功
+    bool success = 1;
+    // 附带的文本消息，例如成功信息或错误详情
+    string message = 2;
+}
