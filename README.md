@@ -53,5 +53,5 @@ cd ..
 # you can use script to launch client
 # ./client.sh
 # or
-./build.file_tranfer_client --client_config=./client/trpc_client_config.yaml
+./build/file_tranfer_client --client_config=./client/trpc_client_config.yaml
 ```
