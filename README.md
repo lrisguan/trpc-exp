@@ -34,7 +34,7 @@ You need to find a place to load this repo.
 ```bash
 git clone https://github.com/gzqccnu/trpc-app.git
 cd trpc-app
-./camke.sh
+./cmake.sh
 ```
 After this, Makefile will be generated to **build** directory.
 ```bash
