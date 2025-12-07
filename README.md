@@ -1,10 +1,11 @@
-# tRPC-App
+# tRPC-EXP
 
 ## 📌 Introduction
-This is a FileTransfer service implemention based on [tRPC-Cpp](https://github.com/trpc-group/trpc-cpp).
+There are experiments implemention of `Cloud Computing` based on RPC framework of 
+[tRPC-Cpp](https://github.com/trpc-group/trpc-cpp).
 
 ## 🚀 Quick start
-- Compile **tRPC-Cpp**:
+- Compile **tRPC-Cpp** as a standalone lib:
 > [!Tip]
 > Recommended to use **gcc** whose version lower than **15.1** or you need
 > to do a lot of works to adjust to the compilation standards. To avoid troubles
@@ -45,29 +46,69 @@ sudo cmake --install build
 ```
 After doing above your **trpc-cpp** will installed in: **/usr/local/trpc-cpp/trpc**.
 
-- Compile **FileTransfer**:
-You need to find a place to load this repo.
+> [!Note]
+> Below are all for experiments.
+
+The first step, you need to clone this repo.
 ```bash
 git clone https://github.com/gzqccnu/trpc-app.git
-cd trpc-app
-./cmake.sh
 ```
-After this, Makefile will be generated to **build** directory.
-```bash
-cd build
-make -j
-```
-Then you'd better back to this repo's root dir.
-```bash
-cd ..
-# open one terminal to run the server
-# you can use script to launch server
-# ./server.sh
-# or
-./build/file_transfer_server --config=./server/trpc_server_config.yaml
-# open another terminal to run the client
-# you can use script to launch client
-# ./client.sh
-# or
-./build/file_transfer_client --client_config=./client/trpc_client_config.yaml
-```
+- **exp1:**
+    - Compile:
+    ```bash
+    cd trpc-app/exp1
+    ./cmake.sh
+    ```
+    After this, Makefile will be generated to **build** directory.
+    ```bash
+    cd build
+    make -j
+    # or you can just run: make -C build -j
+    # or run: cmake --build build -j
+    ```
+    Then you'd better back to this repo's root dir.
+    ```bash
+    cd ..
+    # open one terminal to run the server
+    # you can use script to launch server
+    # ./server.sh
+    # or
+    ./build/file_transfer_server --config=./server/trpc_server_config.yaml
+    # open another terminal to run the client
+    # you can use script to launch client
+    # ./client.sh
+    # or
+    ./build/file_transfer_client --client_config=./client/trpc_client_config.yaml
+    ```
+
+- **exp2:**
+    - Compile:
+    ```bash
+    cd exp2
+    ./cmake.sh
+    ./make.sh
+    ```
+    - Run:
+    <br>
+
+    1.Start the servers.
+    ```bash
+    # run server
+    # you can run it like this, in it, port stands for thr port you'd like to run on
+    ./server.sh `port_1`
+    ./server.sh `port_2`
+    ...
+    ./server.sh `port_n`
+    ```
+    2.Then you can run the gateway.
+    ```bash
+    # the port here are the port you choose in the server part.
+    ./gateway.sh `port_1` `port_2` ... `port_n`
+    ```
+    3.run the client
+    ```bash
+    # download request
+    ./download_client.sh
+    # upload request
+    ./upload_client.sh
+    ```
