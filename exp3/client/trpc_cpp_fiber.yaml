@@ -1,0 +1,13 @@
+global:
+  threadmodel:
+    fiber:
+      - instance_name: fiber_instance
+        concurrency_hint: 4
+        scheduling_group_size: 4
+        reactor_num_per_scheduling_group: 1
+client:
+  service:
+    - name: http_gateway_service
+      protocol: http
+      network: tcp
+      timeout: 5000
