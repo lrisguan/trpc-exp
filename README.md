@@ -23,6 +23,11 @@ There are experiments implemention of `Cloud Computing` based on RPC framework o
 > and that will result the compilation process ending.
 
 If you want to use **gcc-9**. Please run following commands.
+
+> [!Warning]
+> When compiling this project, I using gcc-9 and g++-9. 
+> That means may in a higher version of gcc and g++, you need to add **\<cstdint\>** by your self.
+
 - **Debian/Ubuntu**
 ```bash
 sudo apt install gcc-9 g++-9
@@ -43,6 +48,8 @@ cmake --build build -j$(nproc)
 You'd better install them to system PATH. Just run following command.
 ```bash
 sudo cmake --install build
+# create a soft link for avoiding subsequent cmake errors.
+ln -s /usr/local/trpc-cpp/trpc/cmake/config/trpc_config.cmake /usr/local/trpc-cpp/trpc/cmake/config/trpcConfig.cmake
 ```
 After doing above your **trpc-cpp** will installed in: **/usr/local/trpc-cpp/trpc**.
 
@@ -51,64 +58,12 @@ After doing above your **trpc-cpp** will installed in: **/usr/local/trpc-cpp/trp
 
 The first step, you need to clone this repo.
 ```bash
-git clone https://github.com/gzqccnu/trpc-app.git
+git clone https://github.com/lrisguan/trpc-app.git
+cd trpc-app
 ```
 - **exp1:**
-    - Compile:
-    ```bash
-    cd trpc-app/exp1
-    ./cmake.sh
-    ```
-    After this, Makefile will be generated to **build** directory.
-    ```bash
-    cd build
-    make -j
-    # or you can just run: make -C build -j
-    # or run: cmake --build build -j
-    ```
-    Then you'd better back to this repo's root dir.
-    ```bash
-    cd ..
-    # open one terminal to run the server
-    # you can use script to launch server
-    # ./server.sh
-    # or
-    ./build/file_transfer_server --config=./server/trpc_server_config.yaml
-    # open another terminal to run the client
-    # you can use script to launch client
-    # ./client.sh
-    # or
-    ./build/file_transfer_client --client_config=./client/trpc_client_config.yaml
-    ```
-
+    Please go to [exp1](./exp1/README.md) for details.
 - **exp2:**
-    - Compile:
-    ```bash
-    cd exp2
-    ./cmake.sh
-    ./make.sh
-    ```
-    - Run:
-    <br>
-
-    1.Start the servers.
-    ```bash
-    # run server
-    # you can run it like this, in it, port stands for thr port you'd like to run on
-    ./server.sh `port_1`
-    ./server.sh `port_2`
-    ...
-    ./server.sh `port_n`
-    ```
-    2.Then you can run the gateway.
-    ```bash
-    # the port here are the port you choose in the server part.
-    ./gateway.sh `port_1` `port_2` ... `port_n`
-    ```
-    3.run the client
-    ```bash
-    # download request
-    ./download_client.sh
-    # upload request
-    ./upload_client.sh
-    ```
+    Please go to [exp2](./exp2/README.md) for details.
+- **exp3**
+    Please go to [exp3](./exp3/README.md) for details.
