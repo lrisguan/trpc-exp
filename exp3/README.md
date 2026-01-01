@@ -1,5 +1,7 @@
 # exp3 (Map-Reduce of Word Count)
 
+https://github.com/user-attachments/assets/ad0b4857-68c2-4e1a-a5c3-d8848933b043
+
 ## Compile
 ```bash
 cd exp3
