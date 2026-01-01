@@ -10,7 +10,7 @@ cd exp3
 ## Run
 1.Lauch servers
 ```bash
-/server.sh `port_1`
+./server.sh `port_1`
 ./server.sh `port_2`
 ...
 ./server.sh `port_n`
