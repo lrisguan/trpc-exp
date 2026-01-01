@@ -62,8 +62,14 @@ git clone https://github.com/lrisguan/trpc-app.git
 cd trpc-app
 ```
 - **exp1:**
+    > Download and upload files using protobuf to transfer datas. 
+    
     Please go to [exp1](./exp1/README.md) for details.
 - **exp2:**
+    > A very simple micro service with consistent hash.
+
     Please go to [exp2](./exp2/README.md) for details.
-- **exp3**
+- **exp3:**
+    > Map-Reduce of Word Count.
+
     Please go to [exp3](./exp3/README.md) for details.
