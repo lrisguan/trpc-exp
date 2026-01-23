@@ -1,3 +1,3 @@
 #!/bin/bash
 # client
-./build/file_transfer_client --client_config=./serv/trpc_client_config.yaml
+./build/file_transfer_client --client_config=./client/trpc_client_config.yaml
