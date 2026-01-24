@@ -58,8 +58,8 @@ After doing above your **trpc-cpp** will installed in: **/usr/local/trpc-cpp/trp
 
 The first step, you need to clone this repo.
 ```bash
-git clone https://github.com/lrisguan/trpc-app.git
-cd trpc-app
+git clone https://github.com/lrisguan/trpc-exp.git
+cd trpc-exp
 ```
 - **exp1:**
     > Download and upload files using protobuf to transfer datas. 
