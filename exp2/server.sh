@@ -46,4 +46,4 @@ echo "🚀 starting server on port $PORT..."
 
 # after the program exits, optionally delete the temporary config file (comment out to keep)
 rm -f "$TEMP_CONFIG_FILE"
-echo "🗑️  Temporary config file deleted: $TEMP_CONFIG_FILE
+echo "🗑️  Temporary config file deleted: $TEMP_CONFIG_FILE"
