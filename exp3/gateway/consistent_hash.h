@@ -1,6 +1,7 @@
 // gateway/consistent_hash.h
 #pragma once
 
+#include <cstdint>
 #include <functional>
 #include <map>
 #include <set>
