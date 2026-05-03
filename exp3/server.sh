@@ -46,4 +46,4 @@ echo "🚀 启动服务（端口：$PORT）..."
 
 # 程序退出后，可选删除临时配置文件（注释掉则保留）
 rm -f "$TEMP_CONFIG_FILE"
-echo "🗑️  已删除临时配置文件：$TEMP_CONFIG_FILE
+echo "🗑️  已删除临时配置文件：$TEMP_CONFIG_FILE"
